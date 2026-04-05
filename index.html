@@ -1507,4 +1507,14 @@
                   : n < REC       ? 420
                   : n < HIT       ? 400
                   : 360;
-  
+  n++;
+      setTimeout(tick, delay);
+    } else {
+      setTimeout(() => { n = 1; tick(); }, 3500);
+    }
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
