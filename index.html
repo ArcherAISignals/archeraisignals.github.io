@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archer AI Signals | Professional Futures Trading Signals on TradingView</title>
+<meta name="description" content="Archer AI Signals delivers high-probability futures trading signals directly on your TradingView chart. Powered by a proprietary multi-layer AI engine. Invite-only access.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C5A052;
+    --gold-light: #DDB96A;
+    --gold-dim: #8B6914;
+    --black: #0A0A0A;
+    --surface: #111111;
+    --surface2: #181818;
+    --border: rgba(197,160,82,0.2);
+    --text: #E8E0D0;
+    --text-dim: #8A8070;
+    --green: #00FF88;
+    --red: #FF3333;
+    --white: #FAFAF8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .nav-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 40%, rgba(197,160,82,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 30% at 20% 80%, rgba(0,255,136,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 30% at 80% 20%, rgba(197,160,82,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    max-width: 560px;
+    margin: 0 auto 48px;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 14px 0;
+    margin-top: 64px;
+  }
+
+  .ticker-track {
+    display: flex;
+    animation: ticker 32s linear infinite;
+    width: max-content;
+  }
+
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 36px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .ticker-item span.wr {
+    color: var(--green);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .ticker-sep { color: var(--gold); opacity: 0.4; padding: 0 4px; font-size: 10px; }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 24px; }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-body {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-dim);
+    max-width: 600px;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 100px 24px;
+  }
+
+  .how-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  @media (max-width: 860px) {
+    .how-inner { grid-template-columns: 1fr; gap: 48px; }
+    .how-visual { order: -1; }
+  }
+
+  /* Mock chart */
+  .mock-wrap {
+    border: 1px solid var(--border);
+    background: #0D0D0D;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .mock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: #0A0A0A;
+  }
+
+  .mock-symbol {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .mock-dash-items { display: flex; gap: 14px; }
+
+  .mock-dash-item {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .mock-dash-item.bull { color: var(--green); }
+  .mock-dash-item.bear { color: var(--red); }
+  .mock-dash-item.gold { color: var(--gold); }
+
+  .mock-chart {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    background: #0D0D0D;
+  }
+
+  .mock-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-top: 1px solid var(--border);
+    background: #0A0A0A;
+  }
+
+  .mock-vwap-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: rgba(197,160,82,0.5);
+    text-transform: uppercase;
+  }
+
+  .mock-trend {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .mock-trend.bull { color: var(--green); }
+
+  /* Steps */
+  .how-steps { display: flex; flex-direction: column; gap: 0; }
+
+  .step {
+    display: flex;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.5;
+    flex-shrink: 0;
+    width: 36px;
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .step-title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--text-dim);
+  }
+
+  /* ── FEATURES ── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  .feature-card {
+    background: var(--black);
+    padding: 40px 36px;
+    transition: background 0.2s;
+  }
+
+  .feature-card:hover { background: var(--surface); }
+
+  .feature-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 12px;
+  }
+
+  .feature-title {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .feature-desc {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--text-dim);
+  }
+
+  /* ── INSTRUMENTS ── */
+  .instruments {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .inst-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  .inst-card {
+    background: var(--surface2);
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .inst-card:hover { background: var(--surface); }
+
+  .inst-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .inst-badge.live { color: var(--green); }
+  .inst-badge.sub { color: var(--gold-dim); }
+
+  .inst-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .inst-micro {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .inst-name {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--gold);
+    padding: 0;
+  }
+
+  .stats-inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: 160px;
+    padding: 36px 40px;
+    border-right: 1px solid rgba(0,0,0,0.15);
+    text-align: center;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.55);
+  }
+
+  /* ── PRICING ── */
+  .pricing-card {
+    max-width: 480px;
+    margin: 60px auto 0;
+    border: 1px solid var(--gold);
+    background: var(--surface);
+    padding: 56px 48px;
+    text-align: center;
+    position: relative;
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .pricing-tier {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .pricing-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pricing-price sup {
+    font-size: 32px;
+    vertical-align: top;
+    margin-top: 14px;
+    display: inline-block;
+    color: var(--gold);
+  }
+
+  .pricing-period {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 40px;
+  }
+
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .pricing-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .pricing-features li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 8px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  /* ── LIVE STREAM ── */
+  .stream {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .stream-box {
+    border: 1px solid var(--border);
+    padding: 64px 40px;
+    max-width: 680px;
+    margin: 60px auto 0;
+    position: relative;
+  }
+
+  .stream-live-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+
+  .stream-live-dot::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .stream-desc {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+  }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: var(--black);
+    padding: 60px 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .disclaimer-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+  }
+
+  .disclaimer-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="FullLogo_NoBuffer.png" alt="Archer AI Signals" onerror="this.style.display='none'">
+    <span class="nav-logo-text">Archer AI Signals</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#instruments">Instruments</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#live">Live Stream</a></li>
+  </ul>
+  <a href="https://whop.com/checkout/plan_4vB62srS1vjqY" class="nav-cta" target="_blank">Get Access</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span></span>
+    Archer AI Scalper · Professional Futures Signal Intelligence
+    <span></span>
+  </div>
+  <h1>Precision Signals.<br><em>Every Bar.</em></h1>
+  <p class="hero-sub">Archer AI Signals delivers high-probability trade entries directly on your TradingView chart — with dynamic targets, stops, and intelligent recovery guidance on every trade.</p>
+  <div class="hero-actions">
+    <a href="https://whop.com/checkout/plan_4vB62srS1vjqY" class="btn-primary" target="_blank">Get Access — $47/month</a>
+    <a href="#live" class="btn-secondary">Watch Live Stream</a>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <div class="ticker-item">ES · 2022 <span class="wr">88.2%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">ES · 2021 <span class="wr">84.9%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">ES · 2023 <span class="wr">85.1%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">ES · 2024 <span class="wr">84.8%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">ES · 2025 <span class="wr">82.3%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">5-YEAR AVERAGE <span class="wr">85.0%</span> WIN RATE</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">MAX LOSS STREAK <span class="wr">3</span> ACROSS 878 TRADES</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">PROFIT FACTOR <span class="wr">2.55</span></div>
+      <div class="ticker-sep">◆</div>
+      <!-- duplicate for seamless loop -->
+      <div class="ticker-item">ES · 2022 <span class="wr">88.2%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">ES · 2021 <span class="wr">84.9%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">ES · 2023 <span class="wr">85.1%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">ES · 2024 <span class="wr">84.8%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">ES · 2025 <span class="wr">82.3%</span> WR</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">5-YEAR AVERAGE <span class="wr">85.0%</span> WIN RATE</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">MAX LOSS STREAK <span class="wr">3</span> ACROSS 878 TRADES</div>
+      <div class="ticker-sep">◆</div>
+      <div class="ticker-item">PROFIT FACTOR <span class="wr">2.55</span></div>
+      <div class="ticker-sep">◆</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="how-inner">
+
+      <!-- Left: animated chart mockup -->
+      <div class="how-visual">
+        <div class="mock-wrap">
+          <div class="mock-header">
+            <span class="mock-symbol">NQ · 3-MIN</span>
+            <div class="mock-dash-items">
+              <span class="mock-dash-item bull">W: 147</span>
+              <span class="mock-dash-item bear">L: 18</span>
+              <span class="mock-dash-item gold">WR: 89.1%</span>
+              <span class="mock-dash-item gold">ATR: NORM</span>
+            </div>
+          </div>
+          <div class="mock-chart" id="mockChart">
+            <!-- candles injected by JS -->
+          </div>
+          <div class="mock-footer">
+            <span class="mock-vwap-label">VWAP</span>
+            <span class="mock-trend bull">▲ BULL TREND</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: steps -->
+      <div class="how-steps">
+        <p class="section-label">How It Works</p>
+        <h2 class="section-title">Signal to Trade<br><em>in Seconds</em></h2>
+
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-title">Subscribe &amp; Get Access</div>
+            <div class="step-desc">Subscribe through Whop and provide your TradingView username. You're added to the invite list within 24 hours — no waiting, no setup calls.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-title">Add to Any Chart</div>
+            <div class="step-desc">Open TradingView, find Archer AI Signals in your Invite Only scripts, and add it to any futures chart on any timeframe. It works immediately.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-title">Signal Fires on the Bar</div>
+            <div class="step-desc">The AI engine scans every bar in real time. When conditions align across multiple layers, a Long or Short label paints directly on your chart with a precise target and stop.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <div class="step-title">Recovery Guidance if Needed</div>
+            <div class="step-desc">If price moves against you the system labels exactly when to add and when to adjust your target and stop — removing all guesswork from trade management.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <div class="step-title">Hit Targets. Repeat.</div>
+            <div class="step-desc">When your target is hit a green triangle prints on the bar. The dashboard updates your win count, win rate, and profit factor live after every trade closes.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD SECTION -->
+<section style="background:var(--black); border-top:1px solid var(--border); padding:100px 24px;">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+
+      <div>
+        <p class="section-label">Live Dashboard</p>
+        <h2 class="section-title">Every Number You Need.<br><em>Nothing You Don't.</em></h2>
+        <p class="section-body" style="margin-bottom:32px;">A compact gold-framed dashboard sits in the corner of your chart and updates after every single trade. No clutter, no noise — just the numbers that matter when you're making real-time decisions.</p>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="color:var(--gold); font-size:11px; font-weight:700; letter-spacing:0.12em; width:36px; flex-shrink:0; padding-top:2px;">ATR</span>
+            <span style="font-size:14px; font-weight:300; color:var(--text-dim); line-height:1.6;">Current volatility shown in points and labeled NORM / ELEV / HIGH. Green means normal conditions. Red means size down.</span>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="color:var(--gold); font-size:11px; font-weight:700; letter-spacing:0.12em; width:36px; flex-shrink:0; padding-top:2px;">W/L</span>
+            <span style="font-size:14px; font-weight:300; color:var(--text-dim); line-height:1.6;">Running win and loss count across all historical bars on your chart. Loads with a full track record from day one.</span>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="color:var(--gold); font-size:11px; font-weight:700; letter-spacing:0.12em; width:36px; flex-shrink:0; padding-top:2px;">WR%</span>
+            <span style="font-size:14px; font-weight:300; color:var(--text-dim); line-height:1.6;">Live win rate percentage. Updates the moment each trade closes.</span>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="color:var(--gold); font-size:11px; font-weight:700; letter-spacing:0.12em; width:36px; flex-shrink:0; padding-top:2px;">PF</span>
+            <span style="font-size:14px; font-weight:300; color:var(--text-dim); line-height:1.6;">Profit factor — green above 2.0, gold above 1.0, red below. Know your edge at a glance.</span>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="color:var(--gold); font-size:11px; font-weight:700; letter-spacing:0.12em; width:36px; flex-shrink:0; padding-top:2px;">TRADE</span>
+            <span style="font-size:14px; font-weight:300; color:var(--text-dim); line-height:1.6;">Current position state — Long, Short, or Flat. Never lose track of where you are in a trade.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard mock -->
+      <div style="display:flex; justify-content:center;">
+        <div style="border:1px solid var(--gold); background:#0D0D0D; padding:0; min-width:220px; max-width:260px; width:100%;">
+          <div style="background:var(--gold); padding:8px 16px; text-align:center;">
+            <span style="font-family:'Cormorant Garamond',serif; font-size:14px; font-weight:700; color:#000; letter-spacing:0.1em; text-transform:uppercase;">ARCHER AI · SIGNALS</span>
+          </div>
+          <div style="padding:0;">
+            <div style="display:flex; justify-content:space-between; padding:10px 16px; border-bottom:1px solid rgba(197,160,82,0.15);">
+              <span style="font-size:12px; font-weight:500; letter-spacing:0.1em; color:#666; text-transform:uppercase;">Trend</span>
+              <span style="font-size:12px; font-weight:700; letter-spacing:0.1em; color:#00FF88; text-transform:uppercase;">Bull</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:10px 16px; border-bottom:1px solid rgba(197,160,82,0.15);">
+              <span style="font-size:12px; font-weight:500; letter-spacing:0.1em; color:#666; text-transform:uppercase;">Trade</span>
+              <span style="font-size:12px; font-weight:700; letter-spacing:0.1em; color:#00FF88; text-transform:uppercase;">Long</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:10px 16px; border-bottom:1px solid rgba(197,160,82,0.15);">
+              <span style="font-size:12px; font-weight:500; letter-spacing:0.1em; color:#666; text-transform:uppercase;">W / L</span>
+              <span style="font-size:12px; font-weight:700; letter-spacing:0.1em; color:#E8E0D0; text-transform:uppercase;">147 / 18</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:10px 16px; border-bottom:1px solid rgba(197,160,82,0.15);">
+              <span style="font-size:12px; font-weight:500; letter-spacing:0.1em; color:#666; text-transform:uppercase;">ATR</span>
+              <span style="font-size:12px; font-weight:700; letter-spacing:0.1em; color:#00FF88; text-transform:uppercase;">2.34 · NORM</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:10px 16px; border-bottom:1px solid rgba(197,160,82,0.15);">
+              <span style="font-size:12px; font-weight:500; letter-spacing:0.1em; color:#666; text-transform:uppercase;">PF</span>
+              <span style="font-size:12px; font-weight:700; letter-spacing:0.1em; color:#00FF88; text-transform:uppercase;">2.61</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:10px 16px;">
+              <span style="font-size:12px; font-weight:500; letter-spacing:0.1em; color:#666; text-transform:uppercase;">WR%</span>
+              <span style="font-size:12px; font-weight:700; letter-spacing:0.1em; color:#00FF88; text-transform:uppercase;">89.1%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <p class="section-label">System Features</p>
+    <h2 class="section-title">Built for <em>Professional</em> Execution</h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-tag">Signal Engine</div>
+        <div class="feature-title">Multi-Layer Signal Analysis</div>
+        <div class="feature-desc">A proprietary multi-layer signal engine evaluates momentum, trend structure, volume dynamics, and market positioning simultaneously — filtering out noise before a signal ever fires.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-tag">On-Chart Delivery</div>
+        <div class="feature-title">Everything Paints Directly on Your Chart</div>
+        <div class="feature-desc">No bots, no apps, no feeds. The moment a signal is valid, a Long or Short label appears on the bar. Target and stop lines draw automatically. Recovery labels tell you exactly what to do next. Green triangles confirm target hits. It all lives inside TradingView.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-tag">Trade Management</div>
+        <div class="feature-title">Intelligent Recovery System</div>
+        <div class="feature-desc">When price moves against your position, the system dynamically repositions targets and stops and signals when to scale in — turning adverse moves into managed opportunities.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-tag">Risk Control</div>
+        <div class="feature-title">ATR-Based Risk Awareness — Know Before You Enter</div>
+        <div class="feature-desc">Every stop is calculated from live ATR — so your risk is never fixed, it breathes with the market. The dashboard flags ATR as NORM, ELEV, or HIGH in real time. When ATR is elevated your potential loss on a stop-out is larger, even though win rate stays the same. This is your signal to size down. The system is already built on a 3-to-1 risk-reward — respect the ATR and it stays that way.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-tag">Session Awareness</div>
+        <div class="feature-title">Intelligent Time Filters</div>
+        <div class="feature-desc">Built-in filters block entry during historically low-quality windows — the choppy transition periods that eat into edge. Trade when conditions are right, sit out when they're not.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-tag">Versatility</div>
+        <div class="feature-title">Any Timeframe, Any Session</div>
+        <div class="feature-desc">Backtested across multiple timeframes and both RTH and ETH sessions. The system holds its edge across market conditions, instrument classes, and trading hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUMENTS -->
+<section class="instruments" id="instruments">
+  <div class="container">
+    <p class="section-label">Supported Instruments</p>
+    <h2 class="section-title">All Major Futures Markets. <em>One System.</em></h2>
+    <p class="section-body">Archer AI Signals runs across all major futures instruments — equity indices, commodities, and beyond. Full-size and micro contract support for every account size. Swing and crypto systems coming soon.</p>
+
+    <div class="inst-grid">
+      <div class="inst-card">
+        <div class="inst-badge live">● Live</div>
+        <div class="inst-symbol">NQ</div>
+        <div class="inst-micro">MNQ</div>
+        <div class="inst-name">Nasdaq 100</div>
+      </div>
+      <div class="inst-card">
+        <div class="inst-badge sub">Subscribers</div>
+        <div class="inst-symbol">ES</div>
+        <div class="inst-micro">MES</div>
+        <div class="inst-name">S&amp;P 500</div>
+      </div>
+      <div class="inst-card">
+        <div class="inst-badge sub">Subscribers</div>
+        <div class="inst-symbol">YM</div>
+        <div class="inst-micro">MYM</div>
+        <div class="inst-name">Dow Jones</div>
+      </div>
+      <div class="inst-card">
+        <div class="inst-badge sub">Subscribers</div>
+        <div class="inst-symbol">RTY</div>
+        <div class="inst-micro">M2K</div>
+        <div class="inst-name">Russell 2000</div>
+      </div>
+      <div class="inst-card">
+        <div class="inst-badge live">● Live</div>
+        <div class="inst-symbol">GC</div>
+        <div class="inst-micro">MGC</div>
+        <div class="inst-name">Gold</div>
+      </div>
+      <div class="inst-card">
+        <div class="inst-badge sub">Subscribers</div>
+        <div class="inst-symbol">SI</div>
+        <div class="inst-micro">SIL</div>
+        <div class="inst-name">Silver</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">82–89%</div>
+      <div class="stat-label">Win Rate Range Across Instruments &amp; Timeframes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2.55+</div>
+      <div class="stat-label">Profit Factor (Backtested, 5+ Years of Data)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">All</div>
+      <div class="stat-label">Major Futures Markets Supported</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24 / 7</div>
+      <div class="stat-label">YouTube Live Stream · NQ &amp; Gold</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container" style="text-align:center;">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Two Tiers. <em>One Edge.</em></h2>
+    <p class="section-body" style="margin: 0 auto 60px;">Start with signals on your chart. Upgrade to have them delivered to your phone 24/7 — even when you're away from your screen.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); max-width:860px; margin:0 auto;">
+
+      <!-- Tier 1 -->
+      <div style="background:var(--surface); padding:48px 40px; text-align:center; position:relative;">
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Archer AI Scalper</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:700; color:var(--white); line-height:1; margin-bottom:4px;"><sup style="font-size:28px; vertical-align:top; margin-top:12px; display:inline-block; color:var(--gold);">$</sup>47</div>
+        <div style="font-size:14px; font-weight:300; color:var(--text-dim); letter-spacing:0.1em; margin-bottom:36px;">per month · cancel anytime</div>
+        <ul class="pricing-features" style="text-align:left; margin-bottom:36px;">
+          <li>Invite-only TradingView Pine Script</li>
+          <li>All major futures markets — full &amp; micro contracts</li>
+          <li>Live entry, target, and stop on every signal</li>
+          <li>Add and Adjust recovery guidance on chart</li>
+          <li>Real-time ATR risk dashboard</li>
+          <li>Built-in session time filters</li>
+          <li>Works on any timeframe · RTH and ETH</li>
+        </ul>
+        <a href="https://whop.com/checkout/plan_4vB62srS1vjqY" class="btn-primary" target="_blank" style="width:100%; text-align:center; display:block;">Subscribe — $47/month</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div style="background:var(--surface2); padding:48px 40px; text-align:center; position:relative; border-left:1px solid var(--gold);">
+        <div style="position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--gold); color:#000; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; padding:4px 16px;">Most Popular</div>
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Archer AI Signals Pro</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:700; color:var(--white); line-height:1; margin-bottom:4px;"><sup style="font-size:28px; vertical-align:top; margin-top:12px; display:inline-block; color:var(--gold);">$</sup>97</div>
+        <div style="font-size:14px; font-weight:300; color:var(--text-dim); letter-spacing:0.1em; margin-bottom:36px;">per month · cancel anytime</div>
+        <ul class="pricing-features" style="text-align:left; margin-bottom:36px;">
+          <li>Everything in Archer AI Scalper</li>
+          <li>Telegram signal delivery — fires the instant a signal triggers</li>
+          <li>Entry price, direction, target and stop in every message</li>
+          <li>Signals delivered 24/7 — no chart required</li>
+          <li>Works while you sleep, travel, or step away</li>
+          <li>All major futures markets covered</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="https://whop.com/checkout/plan_4vB62srS1vjqY" class="btn-primary" target="_blank" style="width:100%; text-align:center; display:block; background:var(--gold);">Subscribe — $97/month</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIVE STREAM -->
+<section class="stream" id="live">
+  <div class="container">
+    <p class="section-label">Watch It Live</p>
+    <h2 class="section-title">See the System <em>In Action</em></h2>
+    <p class="section-body" style="margin: 0 auto; text-align:center;">Watch Archer AI Signals run live on NQ and Gold 24/7 on our YouTube channel. See real signals fire in real time — no bar replay, no cherry-picked clips. Just the system doing what it does.</p>
+
+    <div class="stream-box">
+      <div class="stream-live-dot">Live on YouTube</div>
+      <p class="stream-desc">NQ and GC streams run continuously. Watch signals fire, manage recoveries, and hit targets. The proof is in the live chart — no theory, no backtests on screen, just signals working in real time.</p>
+      <a href="#" class="btn-primary">Watch Live Stream</a>
+      <p style="margin-top: 16px; font-size: 12px; color: var(--text-dim); letter-spacing: 0.06em;">YouTube channel link coming soon. Subscribe to Archer AI Signals on YouTube.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section style="background: var(--black); border-top: 1px solid var(--border); padding: 80px 24px; text-align: center;">
+  <div class="container">
+    <p class="section-label">The Archer AI Ecosystem</p>
+    <h2 class="section-title">This Is Only the <em>Beginning</em></h2>
+    <p class="section-body" style="margin: 0 auto 60px;">The Scalper is the foundation. More systems are in development — each built on the same proprietary AI engine, tuned for a different style of trading.</p>
+    <div style="display:flex; gap:1px; background:var(--border); border:1px solid var(--border); max-width:800px; margin:0 auto;">
+      <div style="flex:1; background:var(--surface2); padding:40px 28px; text-align:center;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--green); margin-bottom:12px;">● Live Now</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--white); margin-bottom:8px;">Archer AI Scalper</div>
+        <div style="font-size:13px; font-weight:300; color:var(--text-dim);">High-frequency futures signals · any timeframe · active trade management</div>
+      </div>
+      <div style="flex:1; background:var(--surface2); padding:40px 28px; text-align:center; opacity:0.5;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:12px;">Coming Soon</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--white); margin-bottom:8px;">Archer AI Swing</div>
+        <div style="font-size:13px; font-weight:300; color:var(--text-dim);">Higher timeframe · wider targets · less screen time required</div>
+      </div>
+      <div style="flex:1; background:var(--surface2); padding:40px 28px; text-align:center; opacity:0.5;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:12px;">Coming Soon</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--white); margin-bottom:8px;">Archer AI Crypto</div>
+        <div style="font-size:13px; font-weight:300; color:var(--text-dim);">Same AI engine · built for crypto markets · 24/7 coverage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="disclaimer">
+  <div class="disclaimer-inner">
+    <div class="disclaimer-title">Risk Disclosure &amp; Disclaimer</div>
+    <p>Trading futures and other financial instruments involves substantial risk of loss and is not suitable for all investors. Past performance — including backtested results — is not indicative of future results. Backtested performance results have inherent limitations: they are prepared with the benefit of hindsight, do not account for slippage, commissions, or liquidity constraints, and may not reflect actual trading results. The information and signals provided by Archer AI Signals are for educational and informational purposes only and do not constitute financial advice, investment advice, trading advice, or any other type of advice. You are solely responsible for your own trading decisions. Archer AI Signals and its operators are not registered investment advisers. You should consult a qualified financial professional before making any trading or investment decisions. By subscribing, you agree that you understand and accept these risks in full.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Archer AI Signals</div>
+  <ul class="footer-links">
+    <li><a href="https://www.tradingview.com" target="_blank">TradingView</a></li>
+    <li><a href="https://whop.com/checkout/plan_4vB62srS1vjqY" target="_blank">Subscribe</a></li>
+    <li><a href="#live">Live Stream</a></li>
+    <li><a href="mailto:info@archeraisignals.com">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Archer AI Signals · Not Financial Advice</div>
+</footer>
+
+</body>
+</html>
+<script>
+(function () {
+  const el = document.getElementById('mockChart');
+  if (!el) return;
+
+  const C_GREEN = '#00FF88';
+  const C_RED   = '#FF3333';
+  const C_GOLD  = '#C5A052';
+  const C_WHITE = '#FAFAF8';
+  const C_BG    = '#0D0D0D';
+
+  // Seeded random — same bars every single load
+  let seed = 11;
+  function rand() {
+    seed = (seed * 1664525 + 1013904223) & 0xffffffff;
+    return (seed >>> 0) / 0xffffffff;
+  }
+
+  const TOTAL = 28;
+  const SIG   = 10;
+  const REC   = 16;
+  const HIT   = 24;
+
+  // ── Build bars ────────────────────────────────────────────────
+  const bars = [];
+  let p = 100;
+  for (let i = 0; i < TOTAL; i++) {
+    let bull, body;
+    if      (i < SIG)      { bull = rand() < 0.62; body = rand() * 2.2 + 0.5; }
+    else if (i === SIG)    { bull = true;                  body = rand() * 1.4 + 1.2; }
+    else if (i < REC)      { bull = rand() < 0.25; body = rand() * 1.8 + 0.5; }
+    else if (i === REC)    { bull = false;                 body = rand() * 1.2 + 0.5; }
+    else if (i < HIT)      { bull = rand() < 0.66; body = rand() * 2.0 + 0.4; }
+    else if (i === HIT)    { bull = true;                  body = 2.0; } // forced below
+    else                   { bull = rand() < 0.50; body = rand() * 1.4 + 0.3; }
+    const o = p;
+    const c = bull ? p + body : p - body;
+    const h = Math.max(o, c) + rand() * 0.8;
+    const l = Math.min(o, c) - rand() * 0.8;
+    bars.push({ o, c, h, l, bull });
+    p = c;
+  }
+
+  // ── Trade levels ──────────────────────────────────────────────
+  const ATR     = 3.8;
+  const entryPx = bars[SIG].c;
+  const rawAvg  = (entryPx + bars[REC].c) / 2.0;
+  const recAvg  = Math.min(rawAvg, entryPx - 0.5);
+  const tp1     = entryPx + 1.0 * ATR;
+  const sl1     = entryPx - 2.5 * ATR;
+  const tp2     = recAvg  + 1.0 * ATR;
+  const sl2     = recAvg  - 2.5 * ATR;
+
+  // Force HIT bar to open at previous bar's close (no gap) and close at tp2
+  bars[HIT].bull = true;
+  bars[HIT].o    = bars[HIT - 1].c;   // opens exactly where last bar closed
+  bars[HIT].c    = tp2;
+  bars[HIT].h    = tp2 + 0.3;
+  bars[HIT].l    = Math.min(bars[HIT].o, tp2) - 0.3;
+
+  // Cap bars between REC+1 and HIT-1 so none touch tp2 early
+  // Last 4 bars before HIT are small stair-steps climbing to tp2
+  for (let i = REC + 1; i < HIT; i++) {
+    const cap = tp2 - 0.4;
+    if (bars[i].h > cap) bars[i].h = cap;
+    if (bars[i].c > cap) bars[i].c = cap;
+    if (bars[i].o > cap) bars[i].o = cap;
+  }
+  // Stair-step the last 5 bars — small bodies, each one slightly higher
+  // Build each bar relative to previous close so price stays on the way up
+  const riseAmounts = [0.30, 0.48, 0.36, 0.55, 0.42];
+  const wickT       = [0.22, 0.14, 0.20, 0.16, 0.19];
+  const wickB       = [0.10, 0.16, 0.08, 0.14, 0.11];
+  for (let k = 0; k < 5; k++) {
+    const i      = HIT - 5 + k;
+    const prevC  = bars[i - 1].c;
+    bars[i].bull = true;
+    bars[i].o    = prevC;
+    bars[i].c    = prevC + riseAmounts[k];
+    bars[i].h    = bars[i].c + wickT[k];
+    bars[i].l    = bars[i].o - wickB[k];
+  }
+
+  // ── Fixed price scale — computed once, never changes ──────────
+  // Include every possible level so py() is identical every frame
+  const allP = bars.flatMap(b => [b.h, b.l]);
+  allP.push(tp1, sl1, tp2, sl2, entryPx, recAvg);
+  const MINP = Math.min(...allP) - 3;
+  const MAXP = Math.max(...allP) + 3;
+  const RNG  = MAXP - MINP;
+
+  // ── Render ────────────────────────────────────────────────────
+  function render(n) {
+    const W    = el.offsetWidth  || 420;
+    const H    = el.offsetHeight || 220;
+    const barW = W / TOTAL;
+
+    // cx is fixed — bar i always at same x regardless of n
+    const cx = i => i * barW + barW / 2;
+    // py uses the fixed scale — identical every frame, no jumps
+    const py = v => H - ((v - MINP) / RNG) * H;
+
+    const tradeOpen = n > SIG && n <= HIT + 1;  // lines stay up through and including HIT bar
+    const afterRec  = n > REC;
+    const hitShown  = n >= HIT + 1;             // triangle fires same frame HIT bar prints
+
+    let s = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:hidden;">`;
+
+    // Background tint
+    if (tradeOpen) s += `<rect width="${W}" height="${H}" fill="rgba(0,255,136,0.03)"/>`;
+
+    // ── Lines — only while trade is open ─────────────────────
+    // Key insight: all segments always extend to W (right edge of chart)
+    // No extending to cx(n) — that's what caused the glitch.
+    // The lines are drawn as fixed geometry based on state, not on n.
+    if (tradeOpen) {
+      const sigX    = cx(SIG);
+      const recX    = cx(REC);
+      const bridgeX = cx(REC + 1);  // diagonal ends at the NEXT bar's centre
+
+      const tp1Y  = py(tp1).toFixed(1);
+      const sl1Y  = py(sl1).toFixed(1);
+      const entY  = py(entryPx).toFixed(1);
+      const tp2Y  = py(tp2).toFixed(1);
+      const sl2Y  = py(sl2).toFixed(1);
+      const recY  = py(recAvg).toFixed(1);
+
+      if (!afterRec) {
+        // Pre-rec: flat lines from SIG all the way to right edge
+        s += `<line x1="${sigX.toFixed(1)}" y1="${entY}"  x2="${W}" y2="${entY}"  stroke="${C_WHITE}" stroke-width="2" opacity="0.55"/>`;
+        s += `<line x1="${sigX.toFixed(1)}" y1="${tp1Y}"  x2="${W}" y2="${tp1Y}"  stroke="${C_GREEN}" stroke-width="2" opacity="0.9"/>`;
+        s += `<line x1="${sigX.toFixed(1)}" y1="${sl1Y}"  x2="${W}" y2="${sl1Y}"  stroke="${C_RED}"   stroke-width="2" opacity="0.9"/>`;
+      } else {
+        // After rec: three segments per line — pre, diagonal, post
+        // All extend to W so nothing gaps or glitches
+
+        // Segment 1 — SIG to REC at original levels (faded)
+        s += `<line x1="${sigX.toFixed(1)}"    y1="${entY}"  x2="${recX.toFixed(1)}"    y2="${entY}"  stroke="${C_WHITE}" stroke-width="2" opacity="0.22"/>`;
+        s += `<line x1="${sigX.toFixed(1)}"    y1="${tp1Y}"  x2="${recX.toFixed(1)}"    y2="${tp1Y}"  stroke="${C_GREEN}" stroke-width="2" opacity="0.22"/>`;
+        s += `<line x1="${sigX.toFixed(1)}"    y1="${sl1Y}"  x2="${recX.toFixed(1)}"    y2="${sl1Y}"  stroke="${C_RED}"   stroke-width="2" opacity="0.22"/>`;
+
+        // Segment 2 — diagonal from REC to REC+1
+        s += `<line x1="${recX.toFixed(1)}"    y1="${entY}"  x2="${bridgeX.toFixed(1)}" y2="${recY}"  stroke="${C_WHITE}" stroke-width="2" opacity="0.55"/>`;
+        s += `<line x1="${recX.toFixed(1)}"    y1="${tp1Y}"  x2="${bridgeX.toFixed(1)}" y2="${tp2Y}"  stroke="${C_GREEN}" stroke-width="2" opacity="0.9"/>`;
+        s += `<line x1="${recX.toFixed(1)}"    y1="${sl1Y}"  x2="${bridgeX.toFixed(1)}" y2="${sl2Y}"  stroke="${C_RED}"   stroke-width="2" opacity="0.9"/>`;
+
+        // Segment 3 — REC+1 to right edge at new levels
+        s += `<line x1="${bridgeX.toFixed(1)}" y1="${recY}"  x2="${W}"                  y2="${recY}"  stroke="${C_WHITE}" stroke-width="2" opacity="0.55"/>`;
+        s += `<line x1="${bridgeX.toFixed(1)}" y1="${tp2Y}"  x2="${W}"                  y2="${tp2Y}"  stroke="${C_GREEN}" stroke-width="2" opacity="0.9"/>`;
+        s += `<line x1="${bridgeX.toFixed(1)}" y1="${sl2Y}"  x2="${W}"                  y2="${sl2Y}"  stroke="${C_RED}"   stroke-width="2" opacity="0.9"/>`;
+      }
+
+      // Right-edge labels
+      const tpY = afterRec ? tp2Y : tp1Y;
+      const slY = afterRec ? sl2Y : sl1Y;
+      s += `<rect x="${W-50}" y="${+tpY-11}" width="50" height="12" fill="rgba(0,255,136,0.18)"/>`;
+      s += `<text x="${W-3}" y="${+tpY-2}" text-anchor="end" font-size="9" fill="${C_GREEN}" font-family="monospace" font-weight="600">TARGET</text>`;
+      s += `<rect x="${W-34}" y="${+slY-11}" width="34" height="12" fill="rgba(255,51,51,0.18)"/>`;
+      s += `<text x="${W-3}" y="${+slY-2}" text-anchor="end" font-size="9" fill="${C_RED}" font-family="monospace" font-weight="600">STOP</text>`;
+    }
+
+    // ── HMA Trend Tracer ──────────────────────────────────────
+    for (let i = 1; i < n && i < TOTAL; i++) {
+      const col = bars[i].bull ? C_GREEN : C_RED;
+      s += `<line x1="${cx(i-1).toFixed(1)}" y1="${py(bars[i-1].c).toFixed(1)}" x2="${cx(i).toFixed(1)}" y2="${py(bars[i].c).toFixed(1)}" stroke="${col}" stroke-width="2" opacity="0.7"/>`;
+    }
+
+    // ── VWAP ─────────────────────────────────────────────────
+    const vp = bars.slice(0, n).map((b, i) =>
+      `${cx(i).toFixed(1)},${py((b.h+b.l+b.c)/3).toFixed(1)}`).join(' ');
+    if (vp) s += `<polyline points="${vp}" fill="none" stroke="${C_GOLD}" stroke-width="1" opacity="0.25"/>`;
+
+    // ── Candles ───────────────────────────────────────────────
+    for (let i = 0; i < n && i < TOTAL; i++) {
+      const b  = bars[i];
+      const x  = cx(i);
+      const bw = Math.max(1, barW * 0.62);
+      const oY = py(b.o), cY = py(b.c), hY = py(b.h), lY = py(b.l);
+      const top = Math.min(oY, cY);
+      const bh  = Math.max(1, Math.abs(oY - cY));
+      const col = b.bull ? C_GREEN : C_RED;
+      s += `<line x1="${x.toFixed(1)}" y1="${hY.toFixed(1)}" x2="${x.toFixed(1)}" y2="${lY.toFixed(1)}" stroke="${col}" stroke-width="1"/>`;
+      s += `<rect x="${(x-bw/2).toFixed(1)}" y="${top.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" fill="${col}"/>`;
+    }
+
+    // ── Long label — prints on SIG bar, fixed forever ─────────
+    if (n > SIG) {
+      const lx = cx(SIG);
+      const ly = py(bars[SIG].l) + 5;
+      s += `<polygon points="${lx},${ly} ${lx-4},${ly+6} ${lx+4},${ly+6}" fill="${C_GREEN}"/>`;
+      s += `<rect x="${(lx-23).toFixed(1)}" y="${(ly+6).toFixed(1)}" width="46" height="14" rx="1" fill="${C_GREEN}"/>`;
+      s += `<text x="${lx.toFixed(1)}" y="${(ly+17).toFixed(1)}" text-anchor="middle" font-size="9" font-weight="700" font-family="monospace" fill="${C_BG}">▲ LONG</text>`;
+    }
+
+    // ── Add label — prints on REC bar, fixed forever ──────────
+    if (n > REC) {
+      const ax = cx(REC);
+      const ay = py(bars[REC].l) + 5;
+      s += `<polygon points="${ax},${ay} ${ax-4},${ay+6} ${ax+4},${ay+6}" fill="${C_GOLD}"/>`;
+      s += `<rect x="${(ax-15).toFixed(1)}" y="${(ay+6).toFixed(1)}" width="30" height="14" rx="1" fill="${C_GOLD}"/>`;
+      s += `<text x="${ax.toFixed(1)}" y="${(ay+17).toFixed(1)}" text-anchor="middle" font-size="9" font-weight="700" font-family="monospace" fill="${C_BG}">ADD</text>`;
+    }
+
+    // ── Target hit triangle — prints on HIT bar, fixed forever ─
+    // shape.triangledown above bar — fires same frame HIT bar prints
+    if (hitShown) {
+      const tx = cx(HIT);
+      const ty = py(bars[HIT].h) - 13;
+      s += `<polygon points="${tx.toFixed(1)},${(ty+9).toFixed(1)} ${(tx-6).toFixed(1)},${ty.toFixed(1)} ${(tx+6).toFixed(1)},${ty.toFixed(1)}" fill="${C_GREEN}"/>`;
+    }
+
+    s += '</svg>';
+    el.innerHTML = s;
+  }
+
+  // ── Tick ──────────────────────────────────────────────────────
+  let n = 1;
+  function tick() {
+    render(n);
+    if (n < TOTAL) {
+      const delay = n === SIG + 1 ? 1200
+                  : n === REC + 1 ? 1200
+                  : n === HIT + 1 ? 2000
+                  : n < SIG       ? 380
+                  : n < REC       ? 420
+                  : n < HIT       ? 400
+                  : 360;
+      n++;
+      setTimeout(tick, delay);
+    } else {
+      setTimeout(() => { n = 1; tick(); }, 3500);
+    }
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
