@@ -2,11 +2,84 @@
 <html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Archer AI Signals | Take Aim Before the Shot</title>
-<meta name="description" content="An invite-only TradingView indicator for Micro Nasdaq futures. The level is drawn before the trade exists — then stop and five targets, tracked live on your chart.">
+<title>Archer AI Signals | TradingView Indicator for Futures, Crypto &amp; Stocks</title>
+<meta name="description" content="Archer plots a momentum price level on your TradingView chart before price reaches it — then a volatility-scaled stop and five live targets. Invite-only indicator for futures, crypto and stocks.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#08080A">
+<link rel="canonical" href="https://archeraisignals.com/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Archer AI Signals">
+<meta property="og:url" content="https://archeraisignals.com/">
+<meta property="og:title" content="Archer AI Signals | TradingView Indicator for Futures, Crypto &amp; Stocks">
+<meta property="og:description" content="Archer plots a momentum price level on your TradingView chart before price reaches it — then a volatility-scaled stop and five live targets. Invite-only indicator for futures, crypto and stocks.">
+<meta property="og:image" content="https://archeraisignals.com/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Archer AI Signals | TradingView Indicator for Futures, Crypto &amp; Stocks">
+<meta name="twitter:description" content="Archer plots a momentum price level on your TradingView chart before price reaches it — then a volatility-scaled stop and five live targets.">
+<meta name="twitter:image" content="https://archeraisignals.com/og-card.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://archeraisignals.com/#org",
+      "name": "Archer AI Signals",
+      "url": "https://archeraisignals.com/",
+      "logo": "https://archeraisignals.com/FullLogo_NoBuffer.png",
+      "sameAs": [
+        "https://www.youtube.com/@ArcherAiSignals",
+        "https://whop.com/archer-ai-signals/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://archeraisignals.com/#website",
+      "url": "https://archeraisignals.com/",
+      "name": "Archer AI Signals",
+      "publisher": { "@id": "https://archeraisignals.com/#org" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Archer AI Signals",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "TradingView",
+      "description": "An invite-only TradingView indicator that plots a momentum price level before price reaches it, then a volatility-scaled stop and five live targets on futures, crypto and stock charts.",
+      "url": "https://archeraisignals.com/",
+      "image": "https://archeraisignals.com/og-card.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "49.99",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://whop.com/archer-ai-signals/archer-ai-indicator-monthly/",
+        "category": "subscription"
+      },
+      "publisher": { "@id": "https://archeraisignals.com/#org" }
+    }
+  ]
+}
+</script>
 <style>
   :root{
     --gold:#C5A052; --gold-lt:#DDB96A;
@@ -143,11 +216,13 @@
 
 <nav>
   <div class="brand">
-    <img src="FullLogo_NoBuffer.png" alt="" onerror="this.style.display='none'">
+    <img src="FullLogo_NoBuffer.png" alt="Archer AI Signals logo" onerror="this.style.display='none'">
     <span>Archer AI Signals</span>
   </div>
   <ul class="navlinks">
     <li><a href="#built">Markets</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+    <li><a href="/live.html">Live</a></li>
     <li><a href="#access">Access</a></li>
   </ul>
   <div class="nav-actions">
@@ -237,8 +312,8 @@
 <section class="tint access" id="access">
   <div class="wrap">
     <p class="eyebrow">Access</p>
-    <h2>Invite-only. <em>Granted by hand.</em></h2>
-    <p class="lede" style="margin:18px auto 0">Subscribe through Whop, then send your <b>TradingView username</b> — not your email — and we'll add you to the script. Access is granted by a person, so it isn't instant.</p>
+    <h2>Invite-only. <em>Granted automatically.</em></h2>
+    <p class="lede" style="margin:18px auto 0">Subscribe through Whop and enter your <b>TradingView username</b> — access to the invite-only script is granted automatically through Whop's TradingView integration.</p>
     <div class="box">
       <div class="box-t">Archer AI Signals</div>
       <ul>
@@ -271,6 +346,9 @@
     <div class="foot-b">Archer AI Signals</div>
     <ul>
       <li><a href="#built">Markets</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/live.html">Live</a></li>
+      <li><a href="/connect.html">Connect</a></li>
       <li><a href="#access">Access</a></li>
       <li><a href="#risk">Risk Disclosure</a></li>
       <li><a href="mailto:info@archeraisignals.com">Contact</a></li>
