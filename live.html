@@ -79,10 +79,13 @@
   .cta:hover{background:var(--gold-lt);transform:translateY(-1px)}
   .cta-ghost{border:1px solid var(--line);color:var(--dim);text-decoration:none;font-size:11.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:11px 22px;transition:.2s;display:inline-block}
   .cta-ghost:hover{border-color:var(--gold);color:var(--gold)}
-  .cta-live{border:1px solid rgba(0,179,164,.4);color:var(--teal-lt);text-decoration:none;font-size:11.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:11px 22px;transition:.2s;display:inline-flex;align-items:center;gap:9px}
-  .cta-live:hover{border-color:var(--teal-lt);background:rgba(0,179,164,.08)}
+  .cta-live{border:1px solid var(--line);color:var(--dim);text-decoration:none;font-size:11.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:11px 22px;transition:.2s;display:inline-flex;align-items:center;gap:9px}
+  .cta-live:hover{border-color:var(--gold);color:var(--gold)}
+  body.is-live .cta-live{border-color:rgba(0,179,164,.4);color:var(--teal-lt)}
+  body.is-live .cta-live:hover{border-color:var(--teal-lt);background:rgba(0,179,164,.08)}
   .cta-live.big{font-size:13.5px;padding:16px 30px}
-  .live-dot{width:7px;height:7px;border-radius:50%;background:var(--teal-lt);flex-shrink:0;box-shadow:0 0 0 0 rgba(42,212,196,.6);animation:live-pulse 1.8s infinite}
+  .live-dot{width:7px;height:7px;border-radius:50%;background:#5a5750;flex-shrink:0}
+  body.is-live .live-dot{background:var(--teal-lt);box-shadow:0 0 0 0 rgba(42,212,196,.6);animation:live-pulse 1.8s infinite}
   @keyframes live-pulse{
     0%{box-shadow:0 0 0 0 rgba(42,212,196,.55)}
     70%{box-shadow:0 0 0 7px rgba(42,212,196,0)}
@@ -95,7 +98,8 @@
   .frame-shell{max-width:820px;margin:44px auto 0;border:1px solid var(--line);background:#0A0E17;box-shadow:0 30px 70px rgba(0,0,0,.6);overflow:hidden}
   .frame-top{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.35)}
   .frame-sym{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--gold)}
-  .frame-state{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:3px;color:var(--teal-lt);background:rgba(0,179,164,.14);display:flex;align-items:center;gap:6px}
+  .frame-state{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:3px;color:var(--dim);background:rgba(255,255,255,.05);display:flex;align-items:center;gap:6px}
+  body.is-live .frame-state{color:var(--teal-lt);background:rgba(0,179,164,.14)}
   .frame-body{padding:64px 30px;text-align:center}
   .frame-body p{color:var(--dim);font-size:15px;font-weight:300;max-width:420px;margin:14px auto 0;line-height:1.6}
   .frame-body .cta-live{margin-top:22px}
@@ -161,30 +165,30 @@
     <li><a href="/#access">Access</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="https://www.youtube.com/@ArcherAiSignals/live" target="_blank" rel="noopener" class="cta-live"><span class="live-dot"></span><span class="label">Watch Live</span></a>
+    <a href="https://www.youtube.com/@ArcherAiSignals/live" target="_blank" rel="noopener" class="cta-live"><span class="live-dot"></span><span class="label" data-live-text data-on-text="Watch Live" data-off-text="SHORT">Watch Live</span></a>
     <a href="/#access" class="cta">Get Access</a>
   </div>
 </nav>
 
 <header class="page-hero">
   <div class="wrap">
-    <p class="eyebrow"><span class="live-dot"></span>Live Now on YouTube</p>
+    <p class="eyebrow"><span class="live-dot"></span><span data-live-text data-on-text="Live Now on YouTube" data-off-text="FULL2">Live Now on YouTube</span></p>
     <h1>Archer, running<br><em>on a real chart, right now.</em></h1>
     <p class="lede">No highlight reel, no cherry-picked screenshots — the same overlay every subscriber sees, streaming to a public chart around the clock. Watch the level get published, watch it confirm, watch the targets tick.</p>
     <div class="hero-actions">
-      <a href="https://www.youtube.com/@ArcherAiSignals/live" target="_blank" rel="noopener" class="cta-live big"><span class="live-dot"></span><span class="label">Watch Live on YouTube</span></a>
+      <a href="https://www.youtube.com/@ArcherAiSignals/live" target="_blank" rel="noopener" class="cta-live big"><span class="live-dot"></span><span class="label" data-live-text data-on-text="Watch Live on YouTube" data-off-text="FULL2">Watch Live on YouTube</span></a>
       <a href="/#access" class="cta-ghost">Get Access</a>
     </div>
 
     <div class="frame-shell">
       <div class="frame-top">
         <span class="frame-sym">MNQ1! · 5M</span>
-        <span class="frame-state"><span class="live-dot"></span>Live</span>
+        <span class="frame-state"><span class="live-dot"></span><span data-live-text data-on-text="Live" data-off-text="Offline">Live</span></span>
       </div>
       <div class="frame-body">
         <h2 style="font-size:22px">Watch it on YouTube</h2>
         <p>The player lives on YouTube so the stream never drops when you switch tabs. Tap through and it opens straight to whatever's live right now.</p>
-        <a href="https://www.youtube.com/@ArcherAiSignals/live" target="_blank" rel="noopener" class="cta-live"><span class="live-dot"></span><span class="label">Open the Stream</span></a>
+        <a href="https://www.youtube.com/@ArcherAiSignals/live" target="_blank" rel="noopener" class="cta-live"><span class="live-dot"></span><span class="label" data-live-text data-on-text="Open the Stream" data-off-text="See the Channel">Open the Stream</span></a>
       </div>
     </div>
   </div>
@@ -248,5 +252,35 @@
     <div class="foot-c">© 2026 Archer AI Signals · Not financial advice</div>
   </div>
 </footer>
+
+<script>
+(function(){
+  function liveState(){
+    var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false}).formatToParts(new Date());
+    var map={};parts.forEach(function(p){map[p.type]=p.value});
+    var wd=map.weekday,hour=parseInt(map.hour,10);if(hour===24)hour=0;
+    var live,nextIsToday;
+    if(wd==='Sat'){live=false;nextIsToday=false;}
+    else if(wd==='Sun'){live=hour>=18;nextIsToday=true;}
+    else{live=!(hour>=16&&hour<18);nextIsToday=true;}
+    return {live:live,nextIsToday:nextIsToday};
+  }
+  function apply(){
+    var s=liveState();
+    document.body.classList.toggle('is-live',s.live);
+    var when=(s.nextIsToday?'Today':'Sunday')+' 6:00 PM ET';
+    document.querySelectorAll('[data-live-text]').forEach(function(el){
+      if(s.live){el.textContent=el.dataset.onText||el.textContent;return;}
+      var mode=el.dataset.offText;
+      if(mode==='FULL')el.textContent='Live '+when;
+      else if(mode==='FULL2')el.textContent='Next Live: '+when;
+      else if(mode==='SHORT')el.textContent='Live '+(s.nextIsToday?'':'Sun ')+'6PM ET';
+      else el.textContent=mode||('Live '+when);
+    });
+  }
+  apply();
+  setInterval(apply,60000);
+})();
+</script>
 
 </body></html>
