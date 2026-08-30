@@ -1,0 +1,40 @@
+# Archer AI Signals
+
+> Archer AI Signals is an invite-only TradingView indicator for futures, crypto and stocks. It plots a momentum price level on your chart before price reaches it, then a volatility-scaled stop and a five-target ladder as price action develops. Access is $49.99/month through Whop, granted automatically via Whop's TradingView integration — no manual approval.
+
+## Product
+
+- Name: Archer AI Signals (also called "Archer")
+- Category: TradingView indicator / chart analysis tool. It is not an automated trading system, does not place trades, and is not connected to a broker.
+- Price: $49.99/month, billed and cancelled through Whop, no long-term contract
+- Markets: Futures (NQ/MNQ, ES/MES, YM/MYM, RTY/M2K, GC/MGC, SI/SIL, CL/MCL), crypto (BTC, ETH), stocks (SPY, QQQ, AAPL, NVDA, TSLA and others)
+- Timeframes: Any TradingView timeframe; defaults ship tuned for intraday charts
+- How it works: Archer scans momentum continuously (state: Scanning) → publishes a price level before price reaches it (state: Waiting) → if price trades through the level, confirms it and draws an ATR-scaled stop (1.5x ATR by default) plus five targets, each ticked live the instant price touches it (state: Confirmed)
+- Alerts: Ships with three built-in TradingView alert conditions
+- Trading hours: Live on futures except a daily 4-6pm ET stand-down; off all day Saturday; resumes Sunday 6pm ET
+
+## Access
+
+- Subscribe: https://whop.com/archer-ai-signals/archer-ai-indicator-monthly/
+- Enter your TradingView username in Whop — the invite-only script is granted automatically through Whop's TradingView integration, with no manual review step
+- Cancel any time from Whop's billing
+
+## Pages
+
+- [Homepage](https://archeraisignals.com/): product overview, supported markets, access
+- [FAQ / How It Works](https://archeraisignals.com/faq.html): step-by-step mechanics and answers to common questions
+- [Live Stream](https://archeraisignals.com/live.html): free public YouTube stream of Archer running on a real chart, plus the stream schedule
+- [Connect](https://archeraisignals.com/connect.html): every official link in one place
+
+## Official links
+
+- YouTube channel: https://www.youtube.com/@ArcherAiSignals
+- Live stream: https://www.youtube.com/@ArcherAiSignals/live
+- X (Twitter): https://x.com/ArcherAISignals
+- Instagram: https://instagram.com/ArcherAISignals
+- Discord: https://discord.gg/RJFX9MK9
+- Whop: https://whop.com/archer-ai-signals/
+
+## Disclosures
+
+Archer AI Signals is a chart analysis tool. It places no trades, is not connected to a broker, and is not investment advice or a registered advisory service. Trading futures, crypto and stocks involves substantial risk of loss. Backtested and simulated results have inherent limitations and do not represent actual trading. Full risk disclosure: https://archeraisignals.com/#risk
